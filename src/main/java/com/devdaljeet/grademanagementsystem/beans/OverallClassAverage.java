@@ -5,6 +5,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+
 public class OverallClassAverage {
 	
 	private double avgExercises;

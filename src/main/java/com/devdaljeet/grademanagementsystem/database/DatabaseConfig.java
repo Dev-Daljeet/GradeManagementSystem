@@ -35,6 +35,6 @@ public class DatabaseConfig {
 	@Bean
 	public DataSource loadSchema()
 	{
-		return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2).addScript("classpath:schema.sql").addScript("classpath:newsecuritysetup.sql").build();
+		return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2).addScript("classpath:schema.sql").addScript("classpath:userSchema.sql").build();
 	}
 }
