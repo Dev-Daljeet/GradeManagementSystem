@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Grade Management System</title>
+<link rel="stylesheet" type="text/css" media="all" href="../static/style.css" th:href="@{/style.css}" />
+</head>
+<body>
+<h1>Grade Management System</h1>
+<h1>This is a home page</h1>
+<div class="form-style" sec:authorize="isAuthenticated()">
+<label>Username:</label> &nbsp;<span sec:authentication="name"></span>
+<br>
+<br>
+<label>Roles:</label> &nbsp;<span sec:authentication="principal.authorities"></span>
+<br>
+<br>
+<form th:action="@{/logout}" method="post">
+<input class="userlog" type="submit" value="logout">
+</form>
+</div>
+<br>
+<a style="margin-left:650px;" href="/list" th:href="@{/list}"><b>Add a student</b></a>
+<br>
+<br>
+<a style="margin-left:650px;" href="/view" th:href="@{/view}"><b>View students</b></a>
+<br>
+<br>
+<a style="margin-left:650px;" href="/register" th:href="@{/register}"><b>Register User</b></a>
+</body>
+</html>

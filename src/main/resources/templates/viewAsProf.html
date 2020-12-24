@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>View Students</title>
+<link rel="stylesheet" type="text/css" media="all" href="../static/style.css" th:href="@{/style.css}" />
+</head>
+<body>
+<h1>View Students</h1>
+<table class="table-style" border="1">
+<tr>
+<th>Name</th>
+<th>StudentId</th>
+<th>Exercises</th>
+<th>Assignment 1</th>
+<th>Assignment 2</th>
+<th>Assignment 3</th>
+<th>Midterm</th>
+<th>Final Exam</th>
+<th>Average grade</th>
+<th>Letter grade</th>
+<th>Edit</th>
+<th>Delete</th>
+</tr>
+<tr th:each="i : ${students}">
+<td th:text="${i.name}">Test</td>
+<td th:text="${i.studentId}">Test</td>
+<td th:text="${i.exercises}">Test</td>
+<td th:text="${i.assignment1}">Test</td>
+<td th:text="${i.assignment2}">Test</td>
+<td th:text="${i.assignment3}">Test</td>
+<td th:text="${i.midterm}">Test</td>
+<td th:text="${i.finalExam}">Test</td>
+<td th:text="${i.averageGrade}">Test</td>
+<td th:text="${i.letterGrade}">Test</td>
+<td><a style="margin-left:0px" href="" th:href="@{/edit/{id}(id=${i.id})}"> EDIT </a></td>
+<td><a style="margin-left:0px" href="" th:href="@{/delete/{id}(id=${i.id})}"> DELETE </a></td>
+</tr>
+</table>
+<br>
+<h1>View Average Grade Info</h1>
+<table class="table-style">
+<tr>
+<th>Average Exercises</th>
+<th>Average Assignment 1</th>
+<th>Average Assignment 2</th>
+<th>Average Assignment 3</th>
+<th>Average Midterm</th>
+<th>Average Final Exam</th>
+<th>Average overall grade</th>
+</tr>
+<tr th:object="${classAverage}">
+<td th:text="*{avgExercises}"></td>
+<td th:text="*{avgAssignment1}"></td>
+<td th:text="*{avgAssignment2}"></td>
+<td th:text="*{avgAssignment3}"></td>
+<td th:text="*{avgMidterm}"></td>
+<td th:text="*{avgFinalExam}"></td>
+<td th:text="*{overallAverageGrade}"></td>
+</tr>
+</table>
+<br>
+<a href="/" th:href="@{/}">Go back to Home page</a>
+</body>
+</html>

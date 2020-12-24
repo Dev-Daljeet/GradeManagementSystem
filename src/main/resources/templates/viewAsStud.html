@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>View Students</title>
+<link rel="stylesheet" type="text/css" media="all" href="../static/style.css" th:href="@{/style.css}" />
+</head>
+<body>
+<h1>View your grade</h1>
+<div>
+<div>
+<img id="leftbox" src="../static/student.jpg" th:src="@{/student.jpg}">
+</div>
+<div>
+<table class="table-style" style="width:40%; float:right; margin-top:90px; margin-right:150px;" th:object="${student}">
+<tr>
+<th>Name</th>
+<td th:text="*{name}"></td>
+</tr>
+<tr>
+<th>StudentId</th>
+<td th:text="*{studentId}"></td>
+</tr>
+<tr>
+<th>Exercises</th>
+<td th:text="*{exercises}"></td>
+</tr>
+<tr>
+<th>Assignment 1</th>
+<td th:text="*{assignment1}"></td>
+</tr>
+<tr>
+<th>Assignment 2</th>
+<td th:text="*{assignment2}"></td>
+</tr>
+<tr>
+<th>Assignment 3</th>
+<td th:text="*{assignment3}"></td>
+</tr>
+<tr>
+<th>Midterm</th>
+<td th:text="*{midterm}"></td>
+</tr>
+<tr>
+<th>Final Exam</th>
+<td th:text="*{finalExam}"></td>
+</tr>
+<tr>
+<th>Average grade</th>
+<td th:text="*{averageGrade}"></td>
+</tr>
+<tr>
+<th>Letter grade</th>
+<td th:text="*{letterGrade}"></td>
+</tr>
+</table>
+</div>
+</div>
+<a style="margin:100px 50px 0 0" href="/" th:href="@{/}">Go back to Home page</a>
+</body>
+</html>
