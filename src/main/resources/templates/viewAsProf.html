@@ -39,27 +39,38 @@
 </table>
 <br>
 <h1>View Average Grade Info</h1>
-<table class="table-style">
+<table class="table-style" style="width:40%; float:left; margin-left:450px;" th:object="${classAverage}">
 <tr>
 <th>Average Exercises</th>
-<th>Average Assignment 1</th>
-<th>Average Assignment 2</th>
-<th>Average Assignment 3</th>
-<th>Average Midterm</th>
-<th>Average Final Exam</th>
-<th>Average overall grade</th>
-</tr>
-<tr th:object="${classAverage}">
 <td th:text="*{avgExercises}"></td>
+</tr>
+<tr>
+<th>Average Assignment 1</th>
 <td th:text="*{avgAssignment1}"></td>
+</tr>
+<tr>
+<th>Average Assignment 2</th>
 <td th:text="*{avgAssignment2}"></td>
+</tr>
+<tr>
+<th>Average Assignment 3</th>
 <td th:text="*{avgAssignment3}"></td>
+</tr>
+<tr>
+<th>Average Midterm</th>
 <td th:text="*{avgMidterm}"></td>
+</tr>
+<tr>
+<th>Average Final Exam</th>
 <td th:text="*{avgFinalExam}"></td>
+</tr>
+<tr>
+<th>Average overall grade</th>
 <td th:text="*{overallAverageGrade}"></td>
 </tr>
 </table>
 <br>
-<a href="/" th:href="@{/}">Go back to Home page</a>
+<br>
+<a href="/" style="margin-top:20px;" th:href="@{/}">Go back to Home page</a>
 </body>
 </html>

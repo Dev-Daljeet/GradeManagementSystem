@@ -6,7 +6,7 @@ body{font-family: Georgia, "Times New Roman", Times, serif;
 h1{text-align:center;}
    
 a:link, a:visited {
-  margin-left:620px;
+  margin-left:642px;
   background-color: #495C70;
   color: white;
   padding: 14px 25px;
@@ -73,11 +73,12 @@ a:hover, a:active {
 	border: none;
 	padding: 8px 10px 8px 10px;
 	border-radius: 5px;
-	color: #A8BACE;
+	background-color: #ff0000;
+	color: #fff;
 }
 .form-style input[type=submit]:hover,
 .form-style input[type=button]:hover{
-background-color: red;
+background-color: #ff8400;
 }
 
 .table-style {

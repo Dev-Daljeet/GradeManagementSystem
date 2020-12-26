@@ -10,11 +10,11 @@ xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" >
 	<h1>Register User [Professor]</h1>
 	<form class="form-style" th:action="@{/register}" method="post">
 		<label>Name:</label>
-		<input type="text" name="username" required>
+		<input type="text" name="username" placeholder="Enter your name" required>
 		<br>
         <br>
 		<label>Password:</label>
-		<input type="password" name="password" required>
+		<input type="password" name="password" placeholder="Enter your password" required>
 		<br>
         <br>
 		<input type="submit" value="Add User">
