@@ -15,7 +15,10 @@ import org.springframework.stereotype.Service;
 
 import com.devdaljeet.grademanagementsystem.database.DatabaseAccess;
 
-
+/** Represents the UserDetailedServiceImpl which loads all users from database to security 
+ * @author Daljeet Singh (Dev-Daljeet)
+ * @version 1.0
+ */
 @Service
 public class UserDetailedServiceImpl implements UserDetailsService{
 
@@ -23,6 +26,9 @@ public class UserDetailedServiceImpl implements UserDetailsService{
 	@Lazy
 	DatabaseAccess da;
 
+	/** Loads all the users by username
+	 * @return userDetails An instance of class UserDetails
+	 */
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		//Find the user based on the user name

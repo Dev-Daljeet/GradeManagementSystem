@@ -9,17 +9,26 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
+/** Configure the connection to H2 database
+ * @author Daljeet Singh (Dev-Daljeet)
+ * @version 1.0
+ */
 @Configuration
 public class DatabaseConfig {
 	
-	//Uses to connect our databaseAcess class that will create query
+	/** Connects to the DatabaseAcess class that will create query
+	 * @param dataSource An instance of class DataSource
+	 * @return NamedParameterJdbcTemplate An instance of class NamedParameterJdbcTemplate
+	 */
 	@Bean
 	public NamedParameterJdbcTemplate namedParameterJdbcTemplate(DataSource dataSource)
 	{
 		return new NamedParameterJdbcTemplate(dataSource);
 	}
 	
-	//Create our connection to our database- h2
+	/** Create connection to the database - h2
+	 * @return dataSource An instance of class DataSource
+	 */
 	@Bean
 	public DataSource dataSource()
 	{
@@ -31,7 +40,9 @@ public class DatabaseConfig {
 		return dataSource;
 	}
 	
-	//Define default SQL files that will be executed when project starts 
+	/**Define default SQL files that will be executed when project starts 
+	 * @return dataSource An instance of class DataSource
+	 */
 	@Bean
 	public DataSource loadSchema()
 	{

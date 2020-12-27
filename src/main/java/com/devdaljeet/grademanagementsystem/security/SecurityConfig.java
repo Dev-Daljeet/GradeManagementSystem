@@ -10,21 +10,27 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-
+/** Represents the security config which handles/controls access of every URLs
+ * @author Daljeet Singh (Dev-Daljeet)
+ * @version 1.0
+ */
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Autowired 
 	private LoginAccessDeniedHandler accessDeniedHandler;
 	
+	/** Configure the access of URLs to specific role
+	 */
 	public void configure(HttpSecurity http) throws Exception{
 		http.csrf().disable();
 		http.headers().frameOptions().disable();
 		http.authorizeRequests()
 		.antMatchers("/list").hasRole("PROFESSOR")
+		.antMatchers("/add").hasRole("PROFESSOR")
 		.antMatchers("/view").hasAnyRole("PROFESSOR","STUDENT")
 		.antMatchers(HttpMethod.POST, "/register").permitAll()
-		.antMatchers("/", "/css/**", "/images/**", "/js/**", "/**").permitAll()
+		.antMatchers("/", "/register", "/css/**", "/images/**", "/js/**", "/**").permitAll()
 		.antMatchers("/h2-console/**").permitAll()
 		.anyRequest().authenticated()
 		.and()
@@ -43,6 +49,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.accessDeniedHandler(accessDeniedHandler);
 	}
 	
+	/** Encode the password using BCryptPasswordEncoder
+	 * @return bCryptPasswordEncoder An instance of class BCryptPasswordEncoder
+	 */
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();

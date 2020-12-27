@@ -19,12 +19,19 @@ import com.devdaljeet.grademanagementsystem.beans.Student;
 import com.devdaljeet.grademanagementsystem.beans.User;
 
 
+/** Represents the database access class which manipulates the database
+ * @author Dajeet Singh (Dev-Daljeet)
+ * @version 1.0
+ */
 @Repository
 public class DatabaseAccess {
 	
 	@Autowired
 	NamedParameterJdbcTemplate jdbc;
 	
+	/** Adds a student to database
+	 * @param student An instance of class Student
+	 */
 	public void addStudent(Student student)
 	{
 		MapSqlParameterSource  parameters = new MapSqlParameterSource();
@@ -43,6 +50,9 @@ public class DatabaseAccess {
 		jdbc.update(query, parameters);
 	}
 	
+	/** Returns/gets all students from database
+	 * @return students An array list of all students
+	 */
 	public ArrayList<Student> getStudents(){
 		ArrayList<Student> students = new ArrayList<>();
 		String query = "SELECT * FROM student";
@@ -66,6 +76,10 @@ public class DatabaseAccess {
 		return students;
 	}
 	
+	/** Returns/gets a student of specific ID from database
+	 * @param id An integer which represents the ID of a student
+	 * @return student An instance of class Student
+	 */
 	public Student getStudentById(int id) {
 		MapSqlParameterSource  parameters = new MapSqlParameterSource();
 		ArrayList<Student> students = new ArrayList<>();
@@ -96,6 +110,10 @@ public class DatabaseAccess {
 		}
 	}
 	
+	/** Returns/gets a student of specific name from database
+	 * @param name A String which represents the name of a student
+	 * @return student An instance of class Student
+	 */
 	public Student getStudentByName(String name) {
 		MapSqlParameterSource  parameters = new MapSqlParameterSource();
 		ArrayList<Student> students = new ArrayList<>();
@@ -126,6 +144,9 @@ public class DatabaseAccess {
 		}
 	}
 	
+	/** Edits/Updates a student in database
+	 * @param student An instance of class Student
+	 */
 	public void editStudent(Student student)
 	{
 		MapSqlParameterSource  parameters = new MapSqlParameterSource();
@@ -144,6 +165,9 @@ public class DatabaseAccess {
 		jdbc.update(query, parameters);
 	}
 	
+	/** Deletes a student of specific ID from database
+	 * @param id An integer which represents the ID of a student
+	 */
 	public void deleteStudent(int id)
 	{
 		MapSqlParameterSource  parameters = new MapSqlParameterSource();
@@ -153,13 +177,15 @@ public class DatabaseAccess {
 		jdbc.update(query, parameters);
 	}
 
+	/** Get average grade of every section of a course 
+	 * @return overallClassAverage An instance of class OverallClassAverage
+	 */
 	public OverallClassAverage getAverageOfAllStudents(){
 		ArrayList<OverallClassAverage> list = new ArrayList<OverallClassAverage>();
 		String query = "SELECT AVG(exercises) AS avgExercises, AVG(assignment1) AS avgAssign1, AVG(assignment2) AS avgAssign2, AVG(assignment3) AS avgAssign3, AVG(midterm) AS avgMidterm, AVG(finalExam) AS avgFinalExam, AVG(averageGrade) AS overallAverageGrade FROM student";
 		List<Map<String, Object>> rows = jdbc.queryForList(query, new HashMap<String,Object>());
 		DecimalFormat decimalFormat = new DecimalFormat("###0.##");
 	
-		
 		for(Map<String, Object> row: rows) {
 			OverallClassAverage overallClassAvg = new OverallClassAverage();
 			overallClassAvg.setAvgExercises(Double.parseDouble(decimalFormat.format(((BigDecimal)(row.get("avgExercises"))).doubleValue())));
@@ -174,6 +200,10 @@ public class DatabaseAccess {
 		return list.get(0);
 	}
 	
+	/** Finds the user account of a specific name
+	 * @param name A String which represents the name of a user (Student/Professor)
+	 * @return user An Instance of class User 
+	 */
 	public User findUserAccount(String userName) {
 		MapSqlParameterSource parameters = new MapSqlParameterSource();
 		String query = "SELECT * FROM sec_user WHERE userName=:userName";
@@ -189,6 +219,10 @@ public class DatabaseAccess {
 		}
 	}
 	
+	/** Gets/Returns list of strings which represents the roles given to a user
+	 * @param userId A long which represents the user ID of a user
+	 * @return roles The list of strings which represents the roles given to a user
+	 */
 	public List<String> getRolesById(long userId) {
 		ArrayList<String> roles = new ArrayList<String>();
 		MapSqlParameterSource parameters = new MapSqlParameterSource();
@@ -207,6 +241,10 @@ public class DatabaseAccess {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
+	/** Adds a new user in the database
+	 * @param username A String which represents the username of a user 
+	 * @param password A String which represents the password of a user
+	 */
 	public void addNewUser(String username, String password) {
 		MapSqlParameterSource parameters = new MapSqlParameterSource();
 		String query = "insert into SEC_User (userName, encryptedPassword, ENABLED) values (:user, :pass, 1);";
@@ -215,6 +253,10 @@ public class DatabaseAccess {
 		jdbc.update(query,parameters);
 	}
 	
+	/** Adds user roles to a user in the database
+	 * @param userId An long which represents the user ID of a user
+	 * @param roleId An long which represents the role ID of a role
+	 */
 	public void addUserRoles(long userId, long roleId) {
 		MapSqlParameterSource parameters = new MapSqlParameterSource();
 		String query = "insert into user_role (userId, roleId) values (:userId, :roleId);";

@@ -12,9 +12,15 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.stereotype.Component;
 
+/** Represents the access handler which handles all denied requests
+ * @author Daljeet Singh (Dev-Daljeet)
+ * @version 1.0
+ */
 @Component 
 public class LoginAccessDeniedHandler implements AccessDeniedHandler {
 
+	/** Handles the denied requests (URL)
+	 */
 	@Override
 	public void handle(HttpServletRequest request, HttpServletResponse response,
 			AccessDeniedException accessDeniedException) throws IOException, ServletException {

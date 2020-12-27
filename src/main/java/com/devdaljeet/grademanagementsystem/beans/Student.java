@@ -2,6 +2,11 @@ package com.devdaljeet.grademanagementsystem.beans;
 
 import lombok.*;
 
+/** Represents a student from a class.
+ * (Note: lombok used for constructors, getters and setters)
+ * @author Daljeet Singh (Dev-Daljeet)
+ * @version 1.0
+ */
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -19,12 +24,17 @@ public class Student {
 	private double averageGrade;
 	private String letterGrade;
 	
+	/** Calculate the average grade of a student and calls the calcLetterGrade() method.
+	 */
 	public void calcAverageGrade()
 	{
 		averageGrade = (10*exercises + 6*assignment1 + 12*assignment2 + 12*assignment3 + 30*midterm + 30*finalExam)/100;
 		calcLetterGrade();
 	}
 	
+	/** Calculates the letter grade based on average grade of a student.
+	 *  (Note: I have used Sheridan GPA marking scheme for calculation of letter grade)
+	 */
 	public void calcLetterGrade()
 	{
 		if (averageGrade<=100 && averageGrade>=90)
