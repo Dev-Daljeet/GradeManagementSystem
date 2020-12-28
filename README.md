@@ -1,10 +1,10 @@
 # Grade Management System
 
-This project is a web application which manages the grades of different students. It performs CRUD (Create, read(view), update and delete) operations, calculates the average
-grade as well as letter grade of every student, calculates the overall class average, can register a user [student/professor role] and use Spring security to allow/restrict 
+This project is a web application which manages the grades of different students. It performs CRUD (Create, read(view), update and delete) operations, calculates the
+grade (average grade, letter grade and overall class average) of every student, registers a user (student/professor role) and use Spring security to allow/restrict 
 the access of different URLs depending upon roles.
 
-My objective behind this project was to learn Spring Security and use database to loads user and add users rather than hard coding the users in security config class.
+My objective behind this project was to learn Spring Security and use database to load users and add users rather than hard coding the users in security config class.
 
 Programming language: Java
 
@@ -41,10 +41,9 @@ Dependencies used: Spring Web, Thymeleaf, Lombok, Spring data JDBC, H2 database 
 ### Register page
 ![Screesshot of register page](https://github.com/Dev-Daljeet/Screenshots/blob/master/GradeManagement/register.PNG?raw=true)
 
-## How project (application) works:
+## How the project (application) works:
 
-[Note: Anyone can register as professor by clicking on register button. For student, when professor adds a student, student get added in user relation in the database. 
-Thus, the newly added student can login using his/her name as username and studentId as password.]
+(**Note:** Anyone can register as professor by clicking on register button. For student, when professor adds a student, the student gets added into user relation in the database. Thus, the newly added student can login using his/her name as username and studentId as password.)
 
 ### Professor (User with role Professor) can do following operations:
 - Add a student (name, studentId, Exercises, Assignment 1, Assignment 2, Assignment 3, Midterm, Final Exam)
@@ -71,7 +70,7 @@ For building and running the application you need:
 
 ### Running the application with IDE
 
-There are several ways to run a Spring Boot application on your local machine. One way is to execute the `main` method in the `com.devdaljeet.grademanagementsystem.GradeManagementSystemApplication.java` class from your IDE (Eclipse).
+There are several ways to run a Spring Boot application on your local machine. One way is to execute the `main` method in the `com.devdaljeet.grademanagementsystem.GradeManagementSystemApplication` class from your IDE (Eclipse).
 
 * 	Download the zip or clone the Git repository.
 * 	Unzip the zip file (if you downloaded one)
